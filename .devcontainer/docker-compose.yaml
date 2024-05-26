@@ -1,0 +1,14 @@
+services:
+  terraform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - USER_ID=${USER_ID}
+        - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+    volumes:
+      - ..:/go/terraform
+    tty: true
+    stdin_open: true
+    entrypoint: ['/bin/bash']
